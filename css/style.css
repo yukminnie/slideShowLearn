@@ -1,0 +1,11 @@
+.images {
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid red;
+    transition: transform 0.5s;
+}
+.window {
+    border: 10px solid green;
+    width: 500px;
+    overflow: hidden;
+}
