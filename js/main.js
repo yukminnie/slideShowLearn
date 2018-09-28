@@ -24,10 +24,21 @@ var allButtons = $('#buttons > span')
 for (let i = 0; i < allButtons.length; i++) {
     $(allButtons[i]).on('click', function(x) {
         var index = $(x.currentTarget).index()
-        var n = index * -500
-        log(n)
+        var p = index * -500
         $('#images').css({
-            transform: 'translateX(' + n + 'px)'
+            transform: 'translateX(' + p + 'px)'
         })
     })
 }
+
+// 实现了自动点击轮播
+// eq会对已经出现过的封装, 自动封装一遍
+// n % 3 结果,会循环为 0, 1, 2, 用于标明3个按钮
+// 可以使用.click, 但是trigger后可以接任何方法,更加方便
+var n = 0;
+allButtons.eq(n % 3).trigger('click')
+
+setInterval(() => {
+    n += 1
+    allButtons.eq(n % 3).trigger('click')
+},1000)
