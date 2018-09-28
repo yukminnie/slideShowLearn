@@ -28,6 +28,8 @@ for (let i = 0; i < allButtons.length; i++) {
         $('#images').css({
             transform: 'translateX(' + p + 'px)'
         })
+        n = index
+        allButtons.eq(n).addClass('red').siblings('.red').removeClass('red')
     })
 }
 
