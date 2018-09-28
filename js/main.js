@@ -39,11 +39,24 @@ for (let i = 0; i < allButtons.length; i++) {
 // 使用addClass和removeClass来实现, 伴随按钮点击, 自动变色
 // 此处的siblings接受的是选择器, 而removeClass和addClass接受的是类名
 // 添加找寻移除连接起来操作, 是jq中的链式操作, 链式操作好处是每次都操作着新的被找到的对象
+// 给定时器添加一个id, window添加鼠标事件, 移入时移除计时器, 移出时重新加载计时器
+// bug: 重新加载时如果 将声明关键字var写入, 会造成bug
 var n = 0;
 var size = allButtons.length
 allButtons.eq(n % size).trigger('click').addClass('red').siblings('.red').removeClass('red')
 
-setInterval(() => {
+var timerId = setInterval(() => {
     n += 1
     allButtons.eq(n % size).trigger('click').addClass('red').siblings('.red').removeClass('red')
 },1000)
+
+$('.window').on('mouseenter', function() {
+    window.clearInterval(timerId)
+})
+
+$('.window').on('mouseleave', function() {
+    timerId = setInterval(() => {
+        n += 1
+        allButtons.eq(n % size).trigger('click').addClass('red').siblings('.red').removeClass('red')
+    },1000)
+})
