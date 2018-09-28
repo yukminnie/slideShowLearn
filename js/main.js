@@ -39,7 +39,7 @@ for (let i = 0; i < allButtons.length; i++) {
 // 使用addClass和removeClass来实现, 伴随按钮点击, 自动变色
 // 此处的siblings是选择器, 添加找寻移除连接起来操作, 是jq中的链式操作
 var n = 0;
-var size = 3
+var size = allButtons.length
 allButtons.eq(n % size).trigger('click').addClass('red').siblings('.red').removeClass('red')
 
 setInterval(() => {
