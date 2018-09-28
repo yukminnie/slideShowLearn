@@ -37,7 +37,8 @@ for (let i = 0; i < allButtons.length; i++) {
 // 可以使用.click, 但是trigger后可以接任何方法,更加方便
 // 将被除数提取为size, 方便将来添加按钮
 // 使用addClass和removeClass来实现, 伴随按钮点击, 自动变色
-// 此处的siblings是选择器, 添加找寻移除连接起来操作, 是jq中的链式操作
+// 此处的siblings接受的是选择器, 而removeClass和addClass接受的是类名
+// 添加找寻移除连接起来操作, 是jq中的链式操作, 链式操作好处是每次都操作着新的被找到的对象
 var n = 0;
 var size = allButtons.length
 allButtons.eq(n % size).trigger('click').addClass('red').siblings('.red').removeClass('red')
